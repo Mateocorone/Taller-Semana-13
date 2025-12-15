@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia_V_M.R.E.A_.Views.MenuPage"
+             Title="MenuPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" 
+               Text="Selecciona Medicinas" 
+               FontSize="20" 
+               FontAttributes="Bold"
+               TextColor="Green" 
+               HorizontalOptions="Center" 
+               Margin="10"/>
+
+        <CollectionView x:Name="MedicinasCollectionView"
+                        Grid.Row="1"
+                        Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Frame BackgroundColor="White" 
+                               CornerRadius="10" 
+                               Padding="15">
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0"
+                                           Text="{Binding Nombre}"
+                                           FontSize="16"
+                                           FontAttributes="Bold" />
+
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Precio, StringFormat='${0:F2}'}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="Green" />
+                                </Grid>
+
+                                <Label Text="{Binding Descripcion}"
+                                       FontSize="12"
+                                       TextColor="Gray" />
+
+                                <StackLayout Orientation="Horizontal"
+                                           HorizontalOptions="Center"
+                                           Spacing="10">
+                                    <Button Text="-"
+                                            BackgroundColor="Red"
+                                            TextColor="White"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Clicked="OnDecrementClicked"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Label Text="{Binding Cantidad}"
+                                           FontSize="16"
+                                           VerticalOptions="Center"
+                                           WidthRequest="30"
+                                           HorizontalTextAlignment="Center" />
+
+                                    <Button Text="+"
+                                            BackgroundColor="Green"
+                                            TextColor="White"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Clicked="OnIncrementClicked"
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+
+                                <Label Text="{Binding Subtotal, StringFormat='Subtotal: ${0:F2}'}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="DarkGreen"
+                                       HorizontalOptions="End" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Grid.Row="2" 
+               x:Name="lblTotal"
+               Text="Total: $0.00"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="Green"
+               HorizontalOptions="Center"
+               Margin="10" />
+
+        <Button x:Name="btnGenerarFactura"
+                Grid.Row="3"
+                Text="GENERAR FACTURA"
+                BackgroundColor="Green"
+                TextColor="White"
+                FontSize="16"
+                Margin="20"
+                HeightRequest="50"
+                Clicked="OnGenerarFacturaClicked" />
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Farmacia-V(M.R.E.A)</name>
+    </assembly>
+    <members>
+        <member name="T:Farmacia_V_M.R.E.A_.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

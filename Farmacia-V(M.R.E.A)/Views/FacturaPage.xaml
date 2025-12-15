@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia_V_M.R.E.A_.Views.FacturaPage"
+             Title="FacturaPage">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Frame BackgroundColor="Green">
+                <StackLayout>
+                    <Label Text="FARMACIA VIRTUAL" 
+                           FontSize="20" 
+                           FontAttributes="Bold"
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                    <Label Text="FACTURA DE VENTA" 
+                           FontSize="16" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                </StackLayout>
+            </Frame>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       x:Name="lblNumero"
+                       Text="Número: "
+                       FontSize="14"
+                       FontAttributes="Bold" />
+
+                <Label Grid.Column="1"
+                       x:Name="lblFecha"
+                       Text="Fecha: "
+                       FontSize="14"
+                       FontAttributes="Bold" />
+            </Grid>
+
+            <Label Text="DETALLE:" 
+                   FontSize="16" 
+                   FontAttributes="Bold"
+                   TextColor="Green" />
+
+            <CollectionView x:Name="DetalleCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Frame BackgroundColor="LightGray">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0"
+                                               Text="{Binding NombreMedicina}"
+                                               FontSize="14"
+                                               FontAttributes="Bold" />
+
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Precio, StringFormat='${0:F2}'}"
+                                               FontSize="14" />
+                                    </Grid>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0"
+                                               Text="{Binding Cantidad, StringFormat='Cantidad: {0}'}"
+                                               FontSize="12" />
+
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Subtotal, StringFormat='${0:F2}'}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="Green" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame BackgroundColor="LightGreen">
+                <StackLayout>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                           Text="Descuento (5%):"
+                           FontSize="14" />
+                        <Label Grid.Column="1"
+                           x:Name="lblDescuento"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Red" />   
+                    </Grid>
+
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Subtotal:" FontSize="14" />
+                        <Label Grid.Column="1" x:Name="lblSubtotal" FontSize="14" FontAttributes="Bold" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="IVA (12%):" FontSize="14" />
+                        <Label Grid.Column="1" x:Name="lblImpuesto" FontSize="14" FontAttributes="Bold" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="TOTAL:" FontSize="18" FontAttributes="Bold" />
+                        <Label Grid.Column="1" x:Name="lblTotal" FontSize="18" FontAttributes="Bold" TextColor="Green" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Button Text="NUEVA COMPRA"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        WidthRequest="140"
+                        Clicked="OnNuevaCompraClicked" />
+
+                <Button Text="SALIR"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        WidthRequest="100"
+                        Clicked="OnSalirClicked" />
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
